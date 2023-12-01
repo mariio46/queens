@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import User from '@/app/user';
-import { Login, Logout } from '@/components/auth-navigation';
+import { Login, Logout, Register, Signin } from '@/components/auth-navigation';
 import Link from 'next/link';
 
 export default async function Home() {
@@ -22,7 +22,17 @@ export default async function Home() {
                     <User />
                 </div>
             </div>
-            <div className='mt-8 flex items-center justify-center gap-x-4'>{!session ? <Login /> : <Logout />}</div>
+            <div className='mt-8 flex items-center justify-center gap-x-4'>
+                {!session ? (
+                    <div className='flex items-center gap-x-2'>
+                        <Login />
+                        <Signin />
+                        <Register />
+                    </div>
+                ) : (
+                    <Logout />
+                )}
+            </div>
             <div className='mt-8 flex items-center justify-center'>
                 {!!session && (
                     <Link

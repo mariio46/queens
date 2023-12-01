@@ -6,6 +6,9 @@ import { compare } from 'bcrypt';
 const prisma = new PrismaClient();
 
 export const authOptions: NextAuthOptions = {
+    pages: {
+        signIn: '/login',
+    },
     session: {
         strategy: 'jwt',
     },

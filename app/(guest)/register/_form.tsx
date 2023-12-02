@@ -21,7 +21,7 @@ export default function RegisterForm() {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
-            await axios.post('/api/register', {
+            await axios.post('/api/auth/register', {
                 name: name,
                 email: email,
                 password: password,
@@ -32,7 +32,7 @@ export default function RegisterForm() {
             });
             router.push('/login');
         } catch (err: any) {
-            console.log(err.message);
+            // console.log(err.message);
             setError(err.message);
         }
     };

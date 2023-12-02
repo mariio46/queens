@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Figtree } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const figtree = Figtree({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: `${process.env.APP_NAME}`,
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang='en'>
-            <body className={inter.className}>
+            <body className={cn(figtree.className, 'font-sans antialiased')}>
                 <Providers>{children}</Providers>
                 <Toaster />
             </body>
